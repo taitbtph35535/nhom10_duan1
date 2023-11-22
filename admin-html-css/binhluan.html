@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUẢN LÝ BÌNH LUẬN</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="comments">
+        <h2>Bình luận</h2>
+        <ul id="comment-list">
+        </ul>
+    </div>
+
+    <div class="comment-form">
+        <h2>Thêm Bình Luận</h2>
+        <form id="commentForm">
+            <label for="name">Tên:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="comment">Nội dung:</label>
+            <textarea id="comment" name="comment" required></textarea>
+
+            <button type="submit">Bình luận</button>
+        </form>
+    </div>
+
+    <script>
+        let comments = [
+            { id: 1, name: 'Đức Handsome', comment: 'Đây là 1 quyển sách tuyệt vời!', date: '2023-11-22' },
+            { id: 2, name: 'Tài', comment: 'Đây là 1 quyển sách tuyệt vời!', date: '2023-11-22' },
+            { id: 3, name: 'Đạt', comment: 'Đây là 1 quyển sách tuyệt vời!', date: '2023-11-22' },
+        ];
+        function renderComments() {
+            const commentList = document.getElementById('comment-list');
+            commentList.innerHTML = '';
+
+            comments.forEach(comment => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>${comment.name}</strong> (${comment.date}): ${comment.comment}
+                    <button onclick="editComment(${comment.id})">Edit</button>
+                    <button onclick="deleteComment(${comment.id})">Delete</button>
+                    <button onclick="replyToComment(${comment.id})">Reply</button>
+                `;
+                commentList.appendChild(li);
+            });
+        }
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const commentText = document.getElementById('comment').value;
+
+            const newComment = {
+                id: comments.length + 1,
+                name: name,
+                comment: commentText,
+                date: new Date().toISOString().split('T')[0],
+            };
+
+            comments.push(newComment);
+            renderComments();
+        });
+        function deleteComment(commentId) {
+            comments = comments.filter(comment => comment.id !== commentId);
+            renderComments();
+        }
+        function editComment(commentId) {
+            const index = comments.findIndex(comment => comment.id === commentId);
+            if (index !== -1) {
+                const updatedCommentText = prompt('Edit your comment:', comments[index].comment);
+                if (updatedCommentText !== null) {
+                    comments[index].comment = updatedCommentText;
+                    renderComments();
+                }
+            }
+        }
+        function replyToComment(commentId) {
+            const originalComment = comments.find(comment => comment.id === commentId);
+            const replyText = prompt('Reply to ' + originalComment.name + ':');
+            
+            if (replyText !== null) {
+                const replyComment = {
+                    id: comments.length + 1,
+                    name: 'Admin ' + " đã trả lời " + originalComment.name , 
+                    comment: replyText,
+                    date: new Date().toISOString().split('T')[0],
+                };
+
+                comments.push(replyComment);
+                renderComments();
+            }
+        }
+        renderComments();
+    </script>
+
+</body>
+</html>
