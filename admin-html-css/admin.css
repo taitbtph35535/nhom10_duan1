@@ -466,6 +466,40 @@ body {
     border-radius: 100px;
     cursor: pointer;
 }
+.container {
+    max-width: 2000px;
+    margin: 20px auto;
+    background-color: rgb(238, 200, 238);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order {
+    background-color: lightseagreen;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.order:hover {
+    background-color: lightcoral;
+}
+
+.order-details {
+    margin-top: 10px;
+    border: 1px solid palevioletred;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
 @media (max-width: 1000px) {
     nav{
         width: 73px;
