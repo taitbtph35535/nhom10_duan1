@@ -375,13 +375,14 @@ nav.close ~ .dashboard .top{
     align-items: center;
 }
 #comment-list {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    box-sizing: border-box; 
-    border-radius: 10px;
+    max-width: 2000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 #commentForm {
     width: 100%;
@@ -391,14 +392,67 @@ nav.close ~ .dashboard .top{
     background-color: #f9f9f9;
     border-radius: 10px; 
   }
-  strong {
-    color: #333;
-  }
+/* Thêm các kiểu CSS nếu cần thiết */
 
-  button {
-    margin-left: 10px;
-    cursor: pointer; 
-  }
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+#comment-list li {
+    background-color: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#comment-list strong {
+    color: #333;
+}
+
+#commentForm {
+    margin-top: 20px;
+}
+
+#commentForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#commentForm input,
+#commentForm textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#commentForm button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 @media (max-width: 1000px) {
     nav{
         width: 73px;
