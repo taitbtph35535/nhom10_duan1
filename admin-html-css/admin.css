@@ -491,7 +491,7 @@ body {
 
 .order-details {
     margin-top: 10px;
-    border: 1px solid palevioletred;
+    border: 1px solid rgb(233, 125, 161);
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
