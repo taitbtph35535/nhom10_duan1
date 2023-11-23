@@ -6,8 +6,8 @@ function fetchOrders() {
 
     const orders = [
         { id: 1, customer: 'Trịnh Minh Đức ', total: 150000, date: ' 2023/11/22' },
-        { id: 2, customer: 'Phạm Hồng Dương', total: 50000, date: '2023/11/22' },
-        { id: 3, customer: 'Nguyễn Công Thành', total: 300000, date: '2023/11/22' },
+        { id: 2, customer: 'Phạm Hồng Dương', total: 50000, date: '2023/11/23' },
+        { id: 3, customer: 'Nguyễn Công Thành', total: 300000, date: '2023/11/24' },
     ];
 
     renderOrders(orders);
