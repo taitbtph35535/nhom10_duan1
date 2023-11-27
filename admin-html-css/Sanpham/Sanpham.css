@@ -323,7 +323,6 @@ nav.close ~ .dashboard .top{
 .product-actions button:hover {
     background-color: #45a049;
 }
-
 @media (max-width: 1000px) {
     nav{
         width: 73px;
@@ -418,4 +417,4 @@ nav.close ~ .dashboard .top{
         left: 0;
         width: 100%;
     }
-}
+
