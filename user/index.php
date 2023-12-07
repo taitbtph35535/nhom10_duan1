@@ -83,6 +83,57 @@ switch($act){
             include "./pay.php";
             break;
 
+            case "Bill":
+                $user = $_SESSION['iduser'];
+                if (!isset($_POST['allBooks'])) {
+                    if (isset($_SERVER['HTTP_REFERER'])) {
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        } else {
+                        header('Location: /');
+                        }
+                }
+                elseif ($_POST['allBooks'] != null&&$_POST['phone'] != null&&$_POST['payment_method'] != 0&&$_POST['address'] != null&&$_POST['book_price'] != null&&$_POST['book_quantity'] != null&&$_POST['total'] != null) {
+        
+                    $allBooks =  $_POST['allBooks'];
+                    $book_quantity = $_POST['book_quantity'];
+                    $book_price = $_POST['book_price'];
+                    $address = $_POST['address'];
+                    $payment_method = $_POST['payment_method'];
+                    $phone = $_POST['phone'];
+                    $total = $_POST['total'];
+                    if($payment_method)
+                    insert_bill($user,$allBooks,$book_quantity,$book_price,$address,$payment_method,$phone,$total);
+                    // echo $_SESSION['iduser'];
+                    $listBill = bill_get_all($user);
+                    // var_dump($listBill) ;
+                    $user = $_SESSION['iduser'];
+                    $onePersonCart = load_sanpham_cart($user);
+                    if (isset($_SESSION['iduser'])) {
+                        $userInfo1 = getuserinfo1($_SESSION['iduser']);
+                    }
+                    deleteCart_afterbuy($user);
+                    if ($_POST['payment_method'] =="Momo") {
+                        $total = $_POST['total'];
+                        include "./temp2.php";
+                    }
+                    include "./bill.php";
+                }
+        
+                else{
+                    $alert = "Vui lòng nhập đầy đủ thông tin!!!";
+                    $userInfo1 = getuserinfo1($_SESSION['iduser']);
+                    $Sp_cart=load_sanpham_cart($user);
+                    $onePersonCart = load_sanpham_cart($user);
+                    include "./pay.php";
+                }
+        
+                
+                // $user = $_SESSION['iduser'];
+                // echo $_SESSION['iduser'];
+        
+                
+                break;
+                
     case "Login_register":
         include "./login_register.php";
         break;
