@@ -117,12 +117,12 @@
                     <div class="header__nav col-lg-9 col-md-0 col-sm-0">
                         <ul class="header__nav-list">
                             <li class="header__nav-item">
-                                <a href="index.html" class="header__nav-link">Trang chủ</a>
+                                <a href="index.php" class="header__nav-link">Trang chủ</a>
                             </li>
                             <li class="header__nav-item">
-                                <a href="category.html" class="header__nav-link">Danh mục sản phẩm</a>
+                                <a href="index.php?act=catalogy" class="header__nav-link">Danh mục sản phẩm</a>
                             </li>
-                            <li class="header__nav-item">
+                            <!-- <li class="header__nav-item">
                                 <a href="index.php?act=Product" class="header__nav-link">Sản phẩm</a>
                             </li>
                             <li class="header__nav-item">
@@ -132,7 +132,7 @@
                                 <a href="#" class="header__nav-link">Tuyển cộng tác viên</a>
                             </li>
                             <li class="header__nav-item">
-                                <a href="contact.html" class="header__nav-link">Liên hệ</a>
+                                <a href="contact.html" class="header__nav-link">Liên hệ</a> -->
                             </li>
                         </ul>
                     </div>
