@@ -6,7 +6,7 @@
     <header id="header">
         <!-- header top -->
         <div class="header__top">
-            <div class="container">
+            <div class="container"> 
                 <section class="row flex">
                     <div class="col-lg-5 col-md-0 col-sm-0 heade__top-left">
                         <span>MagicBook - Điều kì diệu qua từng trang sách</span>
@@ -14,11 +14,8 @@
 
                     <nav class="col-lg-7 col-md-0 col-sm-0 header__top-right">
                         <ul class="header__top-list">
-                            <li class="header__top-item">
-                                <a href="index.html" class="header__top-link">
-
-                                Hỏi đáp</a>
-                            </li>
+   
+                            
                             <li class="header__top-item">
                                 <?php 
                                     if (isset($_SESSION['iduser'])) {
@@ -36,21 +33,6 @@
                                             
                                     
                                         </li>';
-                                        echo '<a href="./index.php?act=logout" class="header__top-link">Đăng Xuất</a>';
-                                    }
-                                    else{
-                                        echo '<a href="./index.php?act=Login_register" class="header__top-link">Đăng Nhập/Đăng ký</a>';
-                                    }  
-                                ?>
-                            </li>
-                            <li class="header__top-item">
-                                <?php 
-                                    if (isset($_SESSION['iduser'])) {
-                                        echo '
-                                        <li class="header__top-item">
-                                        <a href="#" class="header__top-link">Xin Chào '.$_SESSION['user'].'</a>
-                                        </li>
-                                        ';
                                         echo '<a href="./index.php?act=logout" class="header__top-link">Đăng Xuất</a>';
                                     }
                                     else{
@@ -76,21 +58,29 @@
                         </h1>
                     </div>
 
-                    <div class="col-lg-6 col-md-7 col-sm-0 header__search">
-                        <select name="" id="" class="header__search-select">
-                            <option value="0">All</option>
-                            <option value="1">Sách tiếng việt</option>
-                            <option value="2">Sách sách nước ngoài</option>
-                            <option value="3">Manga-Comic</option>
-                            
-                        </select>
-                        <input type="text" class="header__search-input" placeholder="Tìm kiếm tại đây...">
+                    <form action="./index.php?act=find" method="post" class="col-lg-6 col-md-7 col-sm-0 header__search">
+                    <!-- <div class="col-lg-6 col-md-7 col-sm-0 header__search"> -->
+                        
+                            <select name="catalogy_name" id="" class="header__search-select">
+                                <option value="0">All</option>
+                                <?php
+                                    foreach($echo_all_catalogy as $data){
+                                        extract($data);
+                                    echo '
+                                    <option value="'.$id.'">'.$name.'</option>
+                                    ';
+                                    }
+                                ?>
+                            </select>
+                            <input type="text" name="find_value" class="header__search-input" placeholder="Tìm kiếm tại đây...">
                         <button class="header__search-btn">
                             <div class="header__search-icon-wrap">
                                 <i class="fas fa-search header__search-icon"></i>
                             </div>
                         </button>
-                    </div>
+                        
+                    <!-- </div> -->
+                    </form>
 
                     <div class="col-lg-2 col-md-0 col-sm-0 header__call">
                         <div class="header__call-icon-wrap">
@@ -106,7 +96,18 @@
                         </div>
                     </div>
 
-                    <a href="./index.php?act=Cart" class="col-lg-1 col-md-1 col-sm-0 header__cart">
+                    <!-- <a href="./index.php?act=Cart" class="col-lg-1 col-md-1 col-sm-0 header__cart"> -->
+                        <?php
+                        if(isset($_SESSION['iduser'])){
+                            echo '<a href="./index.php?act=Cart" class="col-lg-1 col-md-1 col-sm-0 header__cart">';
+                            
+                        }
+                        else{
+                            echo '<a href="#" class="col-lg-1 col-md-1 col-sm-0 header__cart">';
+                        }
+                         
+                        
+                        ?>
                         <div class="header__cart-icon-wrap">
                             <?php
                             if(isset($count)){
@@ -164,25 +165,26 @@
     <section class="menu-slide">
         <div class="container">
             <div class="row">
-                <nav class="menu__nav col-lg-3 col-md-12 col-sm-0">
+            <nav class="menu__nav col-lg-3 col-md-12 col-sm-0">
                     <ul class="menu__list">
-                        <li class="menu__item menu__item--active">
-                            <a href="#" class="menu__link">
-                            <img src="../images1/item/baby-boy.png" alt=""  class="menu__item-icon" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512">
-                            Sách Tiếng Việt</a>
-                        </li>
-                        <li class="menu__item">
-                            <a href="#" class="menu__link">
-                            <img src="../images1/item/translation.png" alt="" class="menu__item-icon" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512">
-                            Sách nước ngoài</a>
-                        </li>
-                      
-                        <li class="menu__item">
-                            <a href="#" class="menu__link">
-                                <img src="../images1/item/1380754_batman_comic_hero_superhero_icon.png" alt="" class="menu__item-icon"  viewBox="0 0 512 512" width="1012" height="512">
+                        <a ></a>
+                        <?php
+                        
+                        foreach($echo_all_catalogy as $data){
+                            extract($data);
+                        echo '
+                            <li class="menu__item menu__item--active">
+                                <a'; 
+                              ?>  onclick="window.location.href='./index.php?act=catalogy#<?php echo $id?>';"
+                                <?php 
+                                echo 'class="menu__link" >
+                                
+                                '.$name.'</a>
+                            </li>
+                        ';
+                        }
+                        ?>
 
-                            Manga - Comic</a>
-                        </li>
                       
                     </ul>
                 </nav>
@@ -239,7 +241,7 @@
                 <div class="bestselling__heading-wrap">
                     <img src="../images/bestselling.png" alt="Sản phẩm bán chạy"
                     class="bestselling__heading-img">
-                    <div class="bestselling__heading">Top bán chạy nhất tuần</div>
+                    <div class="bestselling__heading">Sách mới cập nhật</div>
                 </div>
             </div>
             <section class="row">
@@ -249,11 +251,15 @@
                             ?>           
                                 <div class="bestselling__product col-lg-4 col-md-6 col-sm-12">
                                     <div class="bestselling__product-img-box">
-                                        <img src="../images1/product/image_195509_1_22250_thanh_ly_1.jpg" alt="<?php echo $name ?>" class="bestselling__product-img">
+                                        <a href="index.php?act=Product&id=<?php echo $id ?>">
+                                            <img src="../images1/product/<?php echo $image ?>" alt="<?php echo $book_name ?>"  class="bestselling__product-img">
+                                        </a>
+                                        
                                     </div>
+
                                     <div class="bestselling__product-text">
                                         <h3 class="bestselling__product-title">
-                                            <a href="#" class="bestselling__product-link"><?php echo $name ?></a>
+                                            <a href="index.php?act=Product&id=<?php echo $id ?>" class="bestselling__product-link"><?php echo $book_name ?></a>
                                         </h3>
                 
                                         <div class="bestselling__product-rate-wrap">
@@ -265,14 +271,14 @@
                                         </div>
                 
                                         <span class="bestselling__product-price">
-                                            <?php  echo $price ?>đ
+                                            <?php 
+                                            
+                                            echo number_format($price, 0, '.', '.'); ?>đ
+                                            
                                         </span>
-                
                                         <div class="bestselling__product-btn-wrap">
                                             <form method="GET">
-                                                <a href="index.php?act=Product">
-                                                <button href="index.php?act=Product" type="submit" class="bestselling__product-btn">Xem hàng</button>
-                                                </a>
+                                            <a href="index.php?act=Product&id=<?php echo $id ?>" class="bestselling__product-btn" padding="5px">Xem ngay</a>
                                             </form>
                                         </div>
                                     </div>
@@ -282,43 +288,6 @@
                             }
                         ?>  
 
+
+
                 
-    <!-- end bestselling product -->
-
-    <!-- product -->
-    <section class="product">
-        <div class="container">
-            <div class="row">
-                <aside class="product__sidebar col-lg-3 col-md-0 col-sm-12">
-      
-                        <img src="../images1/banner/slider-right.png" class="slide__right-img">
-                    
-                </aside>
-
-                <article class="product__content col-lg-9 col-md-12 col-sm-12">
-                    <nav class="row">
-                        <ul class="product__list hide-on-mobile">
-                            <li class="product__item product__item--active">
-                                <a href="#" class="product__link">Hành động - Phiêu lưu</a>
-                            </li>
-                            <li class="product__item">
-                                <a href="#" class="product__link">Bí ẩn - Siêu nhiên</a>
-                            </li>
-                            <li class="product__item">
-                                <a href="#" class="product__link">Giả tưởng - Khoa học</a>
-                            </li>
-                            <li class="product__item">
-                                <a href="#" class="product__link">Lãng mạn - Hài kịch</a>
-                            </li>
-                        </ul>
-
-                        <div class="product__title-mobile">
-                            <h2>Hành động - Phiêu lưu</h2>
-                        </div>
-                    </nav>
-
-                    
-            </div>
-        </div>
-    </section>
-    <!--end product love -->
