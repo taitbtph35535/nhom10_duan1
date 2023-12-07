@@ -225,6 +225,21 @@
 
 <?php } ?>
 
+<article class="row cart__foot">
+				<div class="col-6 col-lg-6 col-sm-6 cart__foot-update">
+					
+				</div>
+
+				<p class="col-3 col-lg-3 col-sm-3 cart__foot-total">
+					Tổng cộng: 
+				</p>
+
+				<span class="col-3 col-lg-3 col-sm-3 cart__foot-price">
+					<?php echo number_format($total, 0, '.', '.'); ;?>đ <br>
+
+					<a href="index.php?act=Pay"  class="cart__foot-price-btn">Mua hàng</a>
+
+				</span>
 			</article>
 		</div>
 	</section>
