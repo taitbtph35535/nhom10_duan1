@@ -32,9 +32,12 @@ switch($act){
             break;
 
             
-    case "Cart":
-        include "./cart.php";
-        break;
+            case "Cart":
+                $user = $_SESSION['iduser'];
+                // echo $user;
+                $Sp_cart=load_sanpham_cart($user);
+                include "./cart.php";
+                break;
 
 
         case "Delete_cart":
