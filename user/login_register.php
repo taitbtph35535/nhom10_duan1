@@ -22,19 +22,30 @@
 								<div class="card-front">
 									<div class="center-wrap">
 										<div class="section text-center">
-										<form action="index.php?act=login" class="form" id="form" method="post">
-											<h4 class="mb-4 pb-3">Log In</h4>
-											<div class="form-group">
-												<input type="text" name="user" class="form-style" placeholder="User">
-												<i class="input-icon uil uil-at"></i>
-											</div>	
-											<div class="form-group mt-2">
-												<input type="password" name="pass" class="form-style" placeholder="Pass">
-												<i class="input-icon uil uil-lock-alt"></i>
-											</div>
-											<input type="submit" value="Login" class="btn mt-4" name="dangnhap" >
-                      <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code" class="link">Forgot your password?</a></p>
-					  					</form>
+											<form action="index.php?act=login" class="form" id="form" method="post">
+												<h4 class="mb-4 pb-3">Log In</h4>
+												<div class="form-group">
+													<input type="text" name="user" class="form-style" placeholder="User" >
+													
+													<i class="input-icon uil uil-at"></i>
+													
+												</div>	
+													<div class="form-group mt-2">
+													<input type="password" name="pass" class="form-style" placeholder="Pass" >
+													<i class="input-icon uil uil-lock-alt"></i>
+												</div>
+												<input type="submit" value="Login" class="btn mt-4" name="dangnhap" disabled>
+												<p class="mb-0 mt-4 text-center"><?php if (isset($thongbao)) {
+													echo $thongbao;
+												}else{
+													$thongbao = "";
+													echo $thongbao;
+												}
+												
+												?></p>
+												
+												<p class="mb-0 mt-4 text-center"><a href="#" class="link">Forgot your password?</a></p>
+											</form>
 				      					</div>
 			      					</div>
 			      				</div>
@@ -42,23 +53,22 @@
 									<div class="center-wrap">
 										<div class="section text-center">
 											<h4 class="mb-3 pb-3">Sign Up</h4>
+											<form action="index.php?act=signin" class="form" id="form" method="post">
 											<div class="form-group">
-												<input type="text" class="form-style" placeholder="Full Name">
+												<input type="text" class="form-style" name="user" placeholder="User Name">
 												<i class="input-icon uil uil-user"></i>
-											</div>	
-											<div class="form-group mt-2">
-												<input type="tel" class="form-style" placeholder="Phone Number">
-												<i class="input-icon uil uil-phone"></i>
-											</div>	
-                      <div class="form-group mt-2">
-												<input type="email" class="form-style" placeholder="Email">
-												<i class="input-icon uil uil-at"></i>
 											</div>
 											<div class="form-group mt-2">
-												<input type="password" class="form-style" placeholder="Password">
+												<input type="text" class="form-style" name="pass" placeholder="Pass">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
-											<a href="" class="btn mt-4">Register</a>
+											<div class="form-group mt-2">
+												<input type="email" class="form-style" name="email" placeholder="Email">
+												<i class="input-icon uil uil-at"></i>
+												<i></i>
+											</div>	
+											<input type="submit" value="Register" class="btn mt-4" name="dangky" >
+											</form>
 				      					</div>
 			      					</div>
 			      				</div>
@@ -69,8 +79,7 @@
 	      	</div>
 	    </div>
 	</div>
-</body>
-<script>
+	<script>
 		const userField = document.querySelector('input[name="user"]');
 		const passField = document.querySelector('input[name="pass"]');
 		const submitBtn = document.querySelector('input[name="dangnhap"]');
@@ -92,8 +101,11 @@
 		});
 
 	</script>
+</body>
 </html>
-footer>
+
+    <!-- footer -->
+    <footer>
         <section class="footer__top">
             <div class="container">
                 <div class="row">
