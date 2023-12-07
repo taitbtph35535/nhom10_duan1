@@ -40,40 +40,48 @@ switch($act){
                 break;
 
 
-        case "Delete_cart":
-            // $user = $_SESSION['iduser'];
-            $id = $_GET['id'];
-            delete_bill_from_client($id);
-            include "./history_purchase.php";
-            break;
+    case "Delete_cart":
+        // $user = $_SESSION['iduser'];
+        $id = $_GET['id'];
+        delete_bill_from_client($id);
+        include "./history_purchase.php";
+        break;
 
-            case "find":
-                // echo $find_value;
-                // echo $catalogy;
-                if(isset($_POST['find_value'])&&$_POST['catalogy_name'] != 0){
-                    $catalogy = $_POST['catalogy_name'];
-                    $find_value = $_POST['find_value'];
-                    // echo $catalogy;
-                    $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword_and_catalogy($catalogy,$find_value);
-                }
-                elseif(isset($_POST['find_value'])){
-                $find_value = $_POST['find_value'];
-                $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword($find_value);
-                }
-                include "./find.php";
-                break;
+    case "find":
+        // echo $find_value;
+        // echo $catalogy;
+        if(isset($_POST['find_value'])&&$_POST['catalogy_name'] != 0){
+            $catalogy = $_POST['catalogy_name'];
+            $find_value = $_POST['find_value'];
+            // echo $catalogy;
+            $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword_and_catalogy($catalogy,$find_value);
+        }
+        elseif(isset($_POST['find_value'])){
+        $find_value = $_POST['find_value'];
+        $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword($find_value);
+        }
+        include "./find.php";
+        break;
     case "Product":
-        $oneSp = loadOne_sanpham();
+        // $number = "1500";
+        // $beta = convertNumber($number);
+        // echo $beta;
+        $id =  $_GET['id'];
+        $select_one_book_comments = select_one_book_comments($id);
+        $oneSp = loadOne_sanpham($id);
         include "./product.php";
         break;
 
-    case "Pay":
-        $onePersonCart = load_sanpham_cart();
-        if (isset($_SESSION['iduser'])) {
-            $userInfo1 = getuserinfo1($_SESSION['iduser']);
-        }
-        include "./pay.php";
-        break;
+        case "Pay":
+            $user = $_SESSION['iduser'];    
+            $Sp_cart=load_sanpham_cart($user);
+            $user = $_SESSION['iduser'];
+            $onePersonCart = load_sanpham_cart($user);
+            if (isset($_SESSION['iduser'])) {
+                $userInfo1 = getuserinfo1($_SESSION['iduser']);
+            }
+            include "./pay.php";
+            break;
 
     case "Login_register":
         include "./login_register.php";
