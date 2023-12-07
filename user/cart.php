@@ -148,26 +148,7 @@
 		<div class="container">
 			<article class="row cart__head pc">
 				<nav class="menu__nav col-lg-3 col-md-12 col-sm-0">
-                    <ul class="menu__list">
-                        <li class="menu__item menu__item--active">
-                            <a href="#" class="menu__link">
-                            <img src="../images1/item/baby-boy.png" alt=""  class="menu__item-icon" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512">
-                            Sách Tiếng Việt</a>
-                        </li>
-                        <li class="menu__item">
-                            <a href="#" class="menu__link">
-                            <img src="../images1/item/translation.png" alt="" class="menu__item-icon" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512">
-                            Sách nước ngoài</a>
-                        </li>
-                      
-                        <li class="menu__item">
-                            <a href="#" class="menu__link">
-                                <img src="../images1/item/1380754_batman_comic_hero_superhero_icon.png" alt="" class="menu__item-icon"  viewBox="0 0 512 512" width="1012" height="512">
 
-                            Manga - Comic</a>
-                        </li>
-                      
-                    </ul>
                 </nav>
 				<div class="col-4 cart__head-name">
 					Thông tin sản phẩm
