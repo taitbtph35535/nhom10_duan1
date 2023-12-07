@@ -46,6 +46,22 @@ switch($act){
             delete_bill_from_client($id);
             include "./history_purchase.php";
             break;
+
+            case "find":
+                // echo $find_value;
+                // echo $catalogy;
+                if(isset($_POST['find_value'])&&$_POST['catalogy_name'] != 0){
+                    $catalogy = $_POST['catalogy_name'];
+                    $find_value = $_POST['find_value'];
+                    // echo $catalogy;
+                    $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword_and_catalogy($catalogy,$find_value);
+                }
+                elseif(isset($_POST['find_value'])){
+                $find_value = $_POST['find_value'];
+                $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword($find_value);
+                }
+                include "./find.php";
+                break;
     case "Product":
         $oneSp = loadOne_sanpham();
         include "./product.php";
