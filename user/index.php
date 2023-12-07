@@ -133,7 +133,7 @@ switch($act){
         
                 
                 break;
-                
+
     case "Login_register":
         include "./login_register.php";
         break;
@@ -144,6 +144,28 @@ switch($act){
         }
         include "./login_register.php";
         break;
+
+    case "history_purchase":
+    
+        include "./history_purchase.php";
+        break;
+
+    case "edit_history":
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            
+            include "./edit_history.php";
+        }
+        else{
+            if (isset($_SERVER['HTTP_REFERER'])) {
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                } else {
+                header('Location: /');
+                }
+        }
+
+        break;
+
 
     case "login":
         if(isset($_POST['dangnhap'])){
