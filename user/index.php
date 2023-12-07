@@ -106,16 +106,14 @@ switch($act){
             $phone = $_POST['phone'];
             $total = $_POST['total'];
             if($payment_method)
-            insert_bill($user,$allBooks,$book_quantity,$book_price,$address,$payment_method,$phone,$total);
-            // echo $_SESSION['iduser'];
-            $listBill = bill_get_all($user);
+
             // var_dump($listBill) ;
             $user = $_SESSION['iduser'];
             $onePersonCart = load_sanpham_cart($user);
             if (isset($_SESSION['iduser'])) {
                 $userInfo1 = getuserinfo1($_SESSION['iduser']);
             }
-            deleteCart_afterbuy($user);
+
             if ($_POST['payment_method'] =="Momo") {
                 $total = $_POST['total'];
                 include "./temp2.php";
@@ -175,7 +173,7 @@ switch($act){
         $district_input = $_POST['district_input'];
         $wards_input = $_POST['wards_input'];
         $address = $wards_input.", ".$district_input.", ".$city_input;
-        insert_address_of_bill($id,$address);
+ 
         // echo $address;
         if (isset($_SERVER['HTTP_REFERER'])) {
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -256,7 +254,7 @@ switch($act){
             if(isset($_POST['dangky']) && ($_POST['dangky'])){
                 if($_POST['user']!=""&& $_POST['pass']!=""&&$_POST['email']!=""){
                     $check_to_insert_account = "true";
-                    $get_all_user_to_check_sign_in = get_all_user_to_check_sign_in();
+
                     foreach($get_all_user_to_check_sign_in as $item){
                         extract($item);
                         if($_POST['user'] == $username){
@@ -269,7 +267,7 @@ switch($act){
                         $email=$_POST['email'];
                         $pass=$_POST['pass'];
                         
-                        insert_taikhoan($user,$pass,$email);
+   
                         // $comment_id = LAST_INSERT_ID();
                         $thongbao="Đăng ký thành công.Vui lòng đăng nhập để mua hàng và bình luận!!";
                     }
@@ -281,43 +279,6 @@ switch($act){
             include "./login_register.php";
             break;
 
-        case "comment":
-
-            // echo $_POST['content'];
-            if(isset($_POST['content'])){
-                $content = $_POST['content'];
-                $book_id = $_POST['id_book'];
-                $rating = $_POST['rating'];
-                $account_id = $_SESSION['iduser'];
-                // echo $comment;
-                // echo "----";
-                // echo $id_book;
-                // echo "----";
-                // echo $_SESSION['iduser'];
-                // echo "----";
-                // echo $rating;
-                insert_comment($account_id,$book_id,$content,$rating);
-            }
-            // Lưu trữ URL của trang trước đó
-            $previous_url = $_SERVER['HTTP_REFERER'];
-
-            // Trở lại trang trước đó
-            header("Location: $previous_url");
-            // include "./product.php";
-            break;
-
-
-    case "cartPlus":
-        if (isset($_GET['plusValueId'])) {
-            $id = $_GET['plusValueId'];
-            updateCart_plus($id);
-        }
-        if (isset($_SERVER['HTTP_REFERER'])) {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            } else {
-            header('Location: /');
-            }
-        break;
 
     case "cartUnplus":
         if (isset($_GET['unPlusValueId'])) {
