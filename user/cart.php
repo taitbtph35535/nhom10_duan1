@@ -185,28 +185,41 @@
                  
             ?>
 
-			<article class="row cart__body">
+			<<article class="row cart__body">
 				<div class="col-4 cart__body-name">
 					<div class="cart__body-name-img">
-						<img src="../images1/product/8936049524905.jpg">
+						<img src="../images1/product/<?php echo $image?>">
 					</div>
 					<a href="" class="cart__body-name-title">
-                        <?php echo $name ?>
+                        <?php echo $book_name ?>
 					</a>
 				</div>
-				<div class="col-3 cart__body-quantity">
+				<div class="col-2 cart__body-quantity">
                     <?php
                     if($book_quantity>1){
-                        echo '<a href="index.php?act=cartUnplus&unPlusValueId='.$id.'"><input type="button" onclick="location.reload()"  value="-"  class="cart__body-quantity-minus">';
+                        echo '<a href="index.php?act=cartUnplus&unPlusValueId='.$id.'"><input type="button" onclick="location.reload()"  value="-"  class="cart__body-quantity-minus"></a>';
                     }
                     else{
-                        echo '<a href="index.php?act=cartDelete&ValueId='.$id.'"><input type="button" onclick="location.reload()"  value="-"  class="cart__body-quantity-minus">';
+                        echo '<a href="index.php?act=cartDelete&ValueId='.$id.'"><input type="button" onclick="location.reload()"  value="-"  class="cart__body-quantity-minus"></a>';
                     }
                     ?>
-                    <input type="number" step="1" min="1" max="999" value="<?php echo $book_quantity ?>" class="cart__body-quantity-total">
+                    <input type="number" placeholder="<?php echo $book_quantity ?>"  value="<?php echo $book_quantity ?>" class="cart__body-quantity-total">
                     <a href="index.php?act=cartPlus&plusValueId=<?php echo $id ?>"><input type="button" onclick="location.reload()" value="+" class="cart__body-quantity-plus"></a>
 				</div>
+				<div class="col-2 cart__body-price">
+					<span><?php echo number_format($price, 0, '.', '.'); ?>đ</span>
 
+					
+				</div>
+                <div class="col-2 cart__body-price">
+					<span><?php echo number_format($price*$book_quantity, 0, '.', '.');  ?>đ</span>
+
+					
+				</div>
+                <div class="col-1 cart__body-price">
+                <?php echo '<a href="index.php?act=cartDelete&ValueId='.$id.'">Xóa</a>'?>
+
+					
 				</div>
 			</article>
 
