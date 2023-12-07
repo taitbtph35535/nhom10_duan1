@@ -123,5 +123,15 @@
     </div>
     <script src="../js/jq.js"></script>
     <script src="js/product.js"></script>
+    <script>
+            const currentYOffset = window.scrollY;
+
+            // Khi load lại trang
+            window.addEventListener("load", () => {
+            // Đặt lại vị trí của trang
+            window.scrollTo(0, currentYOffset);
+            });
+
+    </script>
 </body>
 </html>
