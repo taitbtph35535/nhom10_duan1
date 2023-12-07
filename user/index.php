@@ -27,10 +27,22 @@ switch($act){
         include "./content.php";
         break;
 
+        case "temp1":
+            include "./temp_1.php";
+            break;
+
+            
     case "Cart":
         include "./cart.php";
         break;
 
+
+        case "Delete_cart":
+            // $user = $_SESSION['iduser'];
+            $id = $_GET['id'];
+            delete_bill_from_client($id);
+            include "./history_purchase.php";
+            break;
     case "Product":
         $oneSp = loadOne_sanpham();
         include "./product.php";
