@@ -165,9 +165,20 @@
 			</article>
 
             <?php      
-            $total = 0 ;      
+            $total = 0 ;   
+
+
                 foreach($Sp_cart as $item){
+                    
                     extract($item);
+                    // $temp = "";
+                    // $temp1 = "";
+                    // echo count($Sp_cart);
+                    for($i=0;$i<count($Sp_cart);$i++){
+
+                    }
+                    
+                    // echo $addToBill;
                     $total += ($price*$book_quantity);
                     // echo $id;
                     
@@ -195,33 +206,12 @@
                     <input type="number" step="1" min="1" max="999" value="<?php echo $book_quantity ?>" class="cart__body-quantity-total">
                     <a href="index.php?act=cartPlus&plusValueId=<?php echo $id ?>"><input type="button" onclick="location.reload()" value="+" class="cart__body-quantity-plus"></a>
 				</div>
-				<div class="col-3 cart__body-price">
-					<span><?php echo $price ?>đ</span>
 
-					
-				</div>
-                <div class="col-2 cart__body-price">
-					<span><?php echo $price*$book_quantity ?>đ</span>
-
-					
 				</div>
 			</article>
 
 <?php } ?>
-			<article class="row cart__foot">
-				<div class="col-6 col-lg-6 col-sm-6 cart__foot-update">
-					
-				</div>
 
-				<p class="col-3 col-lg-3 col-sm-3 cart__foot-total">
-					Tổng cộng: 
-				</p>
-
-				<span class="col-3 col-lg-3 col-sm-3 cart__foot-price">
-					<?php echo $total;?>đ <br>
-
-					<button class="cart__foot-price-btn"><a href="index.php?act=Pay">Mua hàng</a></button>
-				</span>
 			</article>
 		</div>
 	</section>
