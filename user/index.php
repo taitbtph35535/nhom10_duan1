@@ -12,7 +12,7 @@ include "../model/bill.php";
 include "../model/catalogy.php";
 include "./header.php";
 $listSp=sanpham_get_all();
-$echo_all_catalogy = allcatalogy();
+
 
 if (isset($_SESSION['iduser'])) {
     $idcount= $_SESSION['iduser'];
@@ -50,7 +50,7 @@ switch($act){
     case "Delete_cart":
         // $user = $_SESSION['iduser'];
         $id = $_GET['id'];
-        delete_bill_from_client($id);
+
         include "./history_purchase.php";
         break;
 
@@ -62,12 +62,10 @@ switch($act){
             $catalogy = $_POST['catalogy_name'];
             $find_value = $_POST['find_value'];
             // echo $catalogy;
-            $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword_and_catalogy($catalogy,$find_value);
+
         }
         elseif(isset($_POST['find_value'])){
-        $find_value = $_POST['find_value'];
-        $list_book_find_folow_catalogy_and_keyword = sanpham_get_folow_keyword($find_value);
-        }
+ }
         include "./find.php";
         break;
 
@@ -75,13 +73,7 @@ switch($act){
 
     case "Product":
         // $number = "1500";
-        // $beta = convertNumber($number);
-        // echo $beta;
-        $id =  $_GET['id'];
-        $select_one_book_comments = select_one_book_comments($id);
-        $oneSp = loadOne_sanpham($id);
-        include "./product.php";
-        break;
+        
 
     case "Pay":
         $user = $_SESSION['iduser'];    
