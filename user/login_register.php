@@ -70,4 +70,26 @@
 	    </div>
 	</div>
 </body>
+<script>
+		const userField = document.querySelector('input[name="user"]');
+		const passField = document.querySelector('input[name="pass"]');
+		const submitBtn = document.querySelector('input[name="dangnhap"]');
+
+		userField.addEventListener('input', function() {
+		if (userField.value.trim() && passField.value.trim()) {
+			submitBtn.disabled = false;
+		} else {
+			submitBtn.disabled = true;
+		}
+		});
+
+		passField.addEventListener('input', function() {
+		if (userField.value.trim() && passField.value.trim()) {
+			submitBtn.disabled = false;
+		} else {
+			submitBtn.disabled = true;
+		}
+		});
+
+	</script>
 </html>
