@@ -241,7 +241,130 @@ switch($act){
             break;
 
 
+            case "signin":
+                    
 
+                $thongbao="";
+                if(isset($_POST['dangky']) && ($_POST['dangky'])){
+                    if($_POST['user']!=""&& $_POST['pass']!=""&&$_POST['email']!=""){
+                        $check_to_insert_account = "true";
+                        $get_all_user_to_check_sign_in = get_all_user_to_check_sign_in();
+                        foreach($get_all_user_to_check_sign_in as $item){
+                            extract($item);
+                            if($_POST['user'] == $username){
+                                $check_to_insert_account = "false";
+                                $thongbao="Tên đăng nhập đã tồn tại";
+                            }
+                        }
+                        if ($check_to_insert_account == "true") {
+                            $user=$_POST['user'];
+                            $email=$_POST['email'];
+                            $pass=$_POST['pass'];
+                            
+                            insert_taikhoan($user,$pass,$email);
+                            // $comment_id = LAST_INSERT_ID();
+                            $thongbao="Đăng ký thành công.Vui lòng đăng nhập để mua hàng và bình luận!!";
+                        }
+    
+                    }else{
+                        $thongbao="Vui lòng nhập thông tin!!";
+                    }
+                }
+                include "./login_register.php";
+                break;
+    
+            case "comment":
+    
+                // echo $_POST['content'];
+                if(isset($_POST['content'])){
+                    $content = $_POST['content'];
+                    $book_id = $_POST['id_book'];
+                    $rating = $_POST['rating'];
+                    $account_id = $_SESSION['iduser'];
+                    // echo $comment;
+                    // echo "----";
+                    // echo $id_book;
+                    // echo "----";
+                    // echo $_SESSION['iduser'];
+                    // echo "----";
+                    // echo $rating;
+                    insert_comment($account_id,$book_id,$content,$rating);
+                }
+                // Lưu trữ URL của trang trước đó
+                $previous_url = $_SERVER['HTTP_REFERER'];
+    
+                // Trở lại trang trước đó
+                header("Location: $previous_url");
+                // include "./product.php";
+                break;
+
+                case "update_comment":
+                    // echo "HHAHAHHAHAH";
+                    if (isset($_GET['id'])) {
+                        $id = $_GET['id'];
+                        // echo $id;
+                        // echo "rate";
+                        $rating =  $_POST['rating'];
+                        // echo $rating;
+                        // echo "/content";
+                        $content =  $_POST['content'];
+                        // echo $content;
+                        update_comment($id,$content,$rating);
+            
+                        // $id = $_GET['ValueId'];
+                        // deleteCart_unplus($id);
+                        // delete_comment($id);
+                    }
+                    if (isset($_SERVER['HTTP_REFERER'])) {
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        } else {
+                        header('Location: /');
+                        }
+                    break;
+        
+        
+                    case "AddProductToCart":
+                        // echo $id;
+                        $check = 0;
+                        $id_user = $_GET['iduser'];
+                        $id_book = $_GET['idbook'];
+                        $quantity_of_book = $_POST['quantity_of_book'];
+                        // echo $id_user;
+                        // echo $id_book;
+                        $checkForAddToCart = check_for_add_to_cart();
+                        foreach ($checkForAddToCart as $value) {
+                            extract($value);
+                            // echo"*";
+                            // echo $book_id;
+                            // echo $user_id;
+                            // echo $cart_id;
+                            if($id_user == $user_id &&$id_book == $book_id){
+                                // echo $id_user."=".$user_id."&&".$id_book."=".$book_id;
+                                $check = 1;
+                                echo $cart_id;
+                                updateCart_plus($cart_id,$quantity_of_book);    
+                            if (isset($_SERVER['HTTP_REFERER'])) {
+                                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                                } else {
+                                header('Location: /');
+                                }
+                            }
+                            
+                        }
+        
+                        if ($check == 0) {
+                            insertProductToCart($id_book,$id_user,$quantity_of_book);
+                            if (isset($_SERVER['HTTP_REFERER'])) {
+                                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                                } else {
+                                header('Location: /');
+                                }   
+                        }
+                        // echo $check;
+                        // insertProductToCart($_GET['idbook'],$id_user);
+                       
+                break;
+    
     case "cartPlus":
         if (isset($_GET['plusValueId'])) {
             $id = $_GET['plusValueId'];
