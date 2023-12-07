@@ -20,7 +20,28 @@
                                 Hỏi đáp</a>
                             </li>
                             <li class="header__top-item">
-                                <a href="#" class="header__top-link">Hướng dẫn</a>
+                                <?php 
+                                    if (isset($_SESSION['iduser'])) {
+                                        echo '
+                                        <li class="header__top-item">
+                                        <a href="#" class="header__top-link">Xin Chào '.$_SESSION['user'].'</a>
+                                        </li>
+                                        ';
+                                        echo '                         
+                                        <li class="header__top-item">
+                                            <a href="./index.php?act=history_purchase" class="header__top-link">
+                                            Lịch sử mua hàng
+                                            </a>
+                                        </li>
+                                            
+                                    
+                                        </li>';
+                                        echo '<a href="./index.php?act=logout" class="header__top-link">Đăng Xuất</a>';
+                                    }
+                                    else{
+                                        echo '<a href="./index.php?act=Login_register" class="header__top-link">Đăng Nhập/Đăng ký</a>';
+                                    }  
+                                ?>
                             </li>
                             <li class="header__top-item">
                                 <?php 
