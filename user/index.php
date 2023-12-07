@@ -166,7 +166,7 @@ switch($act){
 
         break;
 
-        
+
     case "insert_address":
         $id = $_GET['id'];
         $city_input = $_POST['city_input'];
@@ -182,6 +182,16 @@ switch($act){
             }
         break;
 
+        case "logout":
+
+            if(isset($_SESSION['iduser'])&& $_SESSION['iduser']){
+                unset($_SESSION['iduser']);
+                unset($_SESSION['user']);
+                unset($_SESSION['role']);
+                
+            }
+            include "./login_register.php";
+            break;
     case "login":
         if(isset($_POST['dangnhap'])){
             if($_POST['user']!=""&& $_POST['pass']!=""){
