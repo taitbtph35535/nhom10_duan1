@@ -166,6 +166,21 @@ switch($act){
 
         break;
 
+        
+    case "insert_address":
+        $id = $_GET['id'];
+        $city_input = $_POST['city_input'];
+        $district_input = $_POST['district_input'];
+        $wards_input = $_POST['wards_input'];
+        $address = $wards_input.", ".$district_input.", ".$city_input;
+        insert_address_of_bill($id,$address);
+        // echo $address;
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            } else {
+            header('Location: /');
+            }
+        break;
 
     case "login":
         if(isset($_POST['dangnhap'])){
