@@ -50,7 +50,7 @@ switch($act){
     case "Delete_cart":
         // $user = $_SESSION['iduser'];
         $id = $_GET['id'];
-        delete_bill_from_client($id);
+       
         include "./history_purchase.php";
         break;
 
