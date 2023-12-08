@@ -1,6 +1,6 @@
 <?php
 
-$bill_get_all_admin = bill_get_one($id);
+
 extract($bill_get_all_admin);
 ?>
 
@@ -123,7 +123,7 @@ extract($bill_get_all_admin);
             </div>   
         </div>
         <!--end header bottom -->
-<?view_cart_of_one_person($custom_id)?>
+
         <!-- header nav -->
         <div class="header__nav">
             <div class="container">
