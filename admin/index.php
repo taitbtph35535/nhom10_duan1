@@ -171,7 +171,7 @@ if(isset($_GET['act']) && $_GET['act']!=""){
                 else{
 
                 }
-                update_bill_from_admin($order_status,$id);
+                
             }
             include "bill.php";
             break;
