@@ -4,7 +4,7 @@
 //     extract($info);
 // }
 // // echo $full_name;
-$bill_get_all_admin = bill_get_all_admin();
+
 extract($bill_get_all_admin);
 // echo $listBill;  
 
